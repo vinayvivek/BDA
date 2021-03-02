@@ -1,0 +1,17 @@
+1	siva	35	m	cse	70
+2	rss	38	m	cse	72
+3	gvp	61	m	eee	210
+4	gg	45	m	ece	105
+5	kis	35	m	ece	70
+6	rr	55	m	eee	89
+7	ff	45	f	cse	82
+8	qq	43	f	eee	79
+9	ww	44	f	ece	80
+10	ss	31	f	mech	45
+11	dd	42	m	it	65
+12	pvp	65	m	mech	300
+13	raj	45	m	cse	234
+14	tvp	54	f	it	78
+15	gop	34	f	it	45
+16	dil	46	m	mech	65
+17	wwf	56	m	eee	270

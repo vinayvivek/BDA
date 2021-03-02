@@ -1,0 +1,325 @@
+cse@cse-OptiPlex-3046:~$ 
+cse@cse-OptiPlex-3046:~$ jps
+28864 NameNode
+29664 NodeManager
+2502 Jps
+29001 DataNode
+29355 ResourceManager
+29180 SecondaryNameNode
+cse@cse-OptiPlex-3046:~$ hdfs dfs -mkdir /WCi
+20/12/26 20:45:47 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+cse@cse-OptiPlex-3046:~$ hdfs dfs -put '/home/cse/viniword.txt' /WCi
+20/12/26 20:54:03 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+cse@cse-OptiPlex-3046:~$ yarn jar C5i8WC.jar raju.WordCount /WCi/viniword.txt /WCo
+20/12/26 20:57:20 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+20/12/26 20:57:20 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+20/12/26 20:57:21 INFO input.FileInputFormat: Total input paths to process : 1
+20/12/26 20:57:22 INFO mapreduce.JobSubmitter: number of splits:1
+20/12/26 20:57:22 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1608977996171_0001
+20/12/26 20:57:22 INFO impl.YarnClientImpl: Submitted application application_1608977996171_0001
+20/12/26 20:57:22 INFO mapreduce.Job: The url to track the job: http://cse-OptiPlex-3046:8088/proxy/application_1608977996171_0001/
+20/12/26 20:57:22 INFO mapreduce.Job: Running job: job_1608977996171_0001
+20/12/26 20:57:27 INFO mapreduce.Job: Job job_1608977996171_0001 running in uber mode : false
+20/12/26 20:57:27 INFO mapreduce.Job:  map 0% reduce 0%
+20/12/26 20:57:31 INFO mapreduce.Job:  map 100% reduce 0%
+20/12/26 20:57:34 INFO mapreduce.Job:  map 100% reduce 100%
+20/12/26 20:57:35 INFO mapreduce.Job: Job job_1608977996171_0001 completed successfully
+20/12/26 20:57:36 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=152
+		FILE: Number of bytes written=207775
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=257
+		HDFS: Number of bytes written=94
+		HDFS: Number of read operations=6
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=1552
+		Total time spent by all reduces in occupied slots (ms)=1528
+		Total time spent by all map tasks (ms)=1552
+		Total time spent by all reduce tasks (ms)=1528
+		Total vcore-seconds taken by all map tasks=1552
+		Total vcore-seconds taken by all reduce tasks=1528
+		Total megabyte-seconds taken by all map tasks=1589248
+		Total megabyte-seconds taken by all reduce tasks=1564672
+	Map-Reduce Framework
+		Map input records=1
+		Map output records=28
+		Map output bytes=264
+		Map output materialized bytes=152
+		Input split bytes=103
+		Combine input records=28
+		Combine output records=13
+		Reduce input groups=13
+		Reduce shuffle bytes=152
+		Reduce input records=13
+		Reduce output records=13
+		Spilled Records=26
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=76
+		CPU time spent (ms)=880
+		Physical memory (bytes) snapshot=425943040
+		Virtual memory (bytes) snapshot=3853086720
+		Total committed heap usage (bytes)=325058560
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=154
+	File Output Format Counters 
+		Bytes Written=94
+cse@cse-OptiPlex-3046:~$ hdfs dfs -ls /WCo
+20/12/26 20:58:34 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 2 items
+-rw-r--r--   1 cse supergroup          0 2020-12-26 20:57 /WCo/_SUCCESS
+-rw-r--r--   1 cse supergroup         94 2020-12-26 20:57 /WCo/part-r-00000
+cse@cse-OptiPlex-3046:~$ hdfs dfs -cat /WCo/part-r-00000
+20/12/26 20:59:23 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+apple	1
+ball	1
+bane	3
+cat	2
+dog	1
+egg	2
+kishore	4
+lion	1
+mummy	3
+rams	3
+tiger	1
+vini	4
+vinu	2
+cse@cse-OptiPlex-3046:~$ hdfs dfs -mkdir /WC1
+20/12/26 21:01:38 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+cse@cse-OptiPlex-3046:~$ hdfs dfs -put '/home/cse/viniword.txt' /WC1
+20/12/26 21:04:16 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+cse@cse-OptiPlex-3046:~$ yarn jar C5i8WC.jar raju.WordCount /WC1/viniword.txt /WCo1
+20/12/26 21:04:57 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+20/12/26 21:04:57 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+20/12/26 21:04:58 INFO input.FileInputFormat: Total input paths to process : 1
+20/12/26 21:04:58 INFO mapreduce.JobSubmitter: number of splits:1
+20/12/26 21:04:58 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1608977996171_0002
+20/12/26 21:04:58 INFO impl.YarnClientImpl: Submitted application application_1608977996171_0002
+20/12/26 21:04:58 INFO mapreduce.Job: The url to track the job: http://cse-OptiPlex-3046:8088/proxy/application_1608977996171_0002/
+20/12/26 21:04:58 INFO mapreduce.Job: Running job: job_1608977996171_0002
+20/12/26 21:05:02 INFO mapreduce.Job: Job job_1608977996171_0002 running in uber mode : false
+20/12/26 21:05:02 INFO mapreduce.Job:  map 0% reduce 0%
+20/12/26 21:05:06 INFO mapreduce.Job:  map 100% reduce 0%
+20/12/26 21:05:10 INFO mapreduce.Job:  map 100% reduce 100%
+20/12/26 21:05:10 INFO mapreduce.Job: Job job_1608977996171_0002 completed successfully
+20/12/26 21:05:10 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=152
+		FILE: Number of bytes written=207777
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=257
+		HDFS: Number of bytes written=94
+		HDFS: Number of read operations=6
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=1297
+		Total time spent by all reduces in occupied slots (ms)=1477
+		Total time spent by all map tasks (ms)=1297
+		Total time spent by all reduce tasks (ms)=1477
+		Total vcore-seconds taken by all map tasks=1297
+		Total vcore-seconds taken by all reduce tasks=1477
+		Total megabyte-seconds taken by all map tasks=1328128
+		Total megabyte-seconds taken by all reduce tasks=1512448
+	Map-Reduce Framework
+		Map input records=1
+		Map output records=28
+		Map output bytes=264
+		Map output materialized bytes=152
+		Input split bytes=103
+		Combine input records=28
+		Combine output records=13
+		Reduce input groups=13
+		Reduce shuffle bytes=152
+		Reduce input records=13
+		Reduce output records=13
+		Spilled Records=26
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=76
+		CPU time spent (ms)=1050
+		Physical memory (bytes) snapshot=424873984
+		Virtual memory (bytes) snapshot=3856314368
+		Total committed heap usage (bytes)=323485696
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=154
+	File Output Format Counters 
+		Bytes Written=94
+cse@cse-OptiPlex-3046:~$ hdfs dfs -cat /WCo1/part-r-00000
+20/12/26 21:06:02 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+apple	1
+ball	1
+bane	3
+cat	2
+dog	1
+egg	2
+kishore	4
+lion	1
+mummy	3
+rams	3
+tiger	1
+vini	4
+vinu	2
+cse@cse-OptiPlex-3046:~$ 
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::;;
+commands: word count
+
+
+part1:
+
+	1.jps
+	2.C5i8/bin/hdfs namenode -format
+	3.C5i8/sbin/start-dfs.sh
+	4.C5i8/sbin/start-yarn.sh
+	5.jps
+
+
+part2:
+
+
+
+
+	1.hdfs dfs -mkdir /WCi
+	2.hdfs dfs -put '/home/cse/viniword.txt' /WCi
+	3.yarn jar C5i8WC.jar raju.WordCount /WCi/viniword.txt /WCo
+	4.hdfs dfs -ls /WCo
+	5.hdfs dfs -cat /WCo/part-r-00000
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+part2: max temp
+
+	1.hdfs dfs -mkdir /tempmaxi
+	2.hdfs dfs -put '/home/cse/1906.txt' /tempmaxi
+	3.yarn jar tempmax.jar vvstemp.HighestDriver /1906.txt /tempmaxo
+	4.hdfs dfs -ls /tempmaxo
+	5.hdfs dfs -cat /tempmaxo/part-00000
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+part4: join record
+
+	1.hdfs dfs -mkdir /joini
+	2.hdfs dfs -put '/home/cse/Desktop/hadoop_lab_exam/hadooplabprograms/joinrecord/Data/empname.txt' '/home/cse/Desktop/hadoop_lab_exam/hadooplabprograms/joinrecord/Data/empdept.txt' /joini
+	3.yarn jar filejoin.jar ramaraju.FileJoinerDriver /joini/empname.txt /joini/empdept.txt /joino
+	4.hdfs dfs -ls /joino
+	5.hdfs dfs -cat /joino/part-r-00000
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+part 5: Duplicate Record
+
+	1.hdfs dfs -mkdir /duplicatei
+	2.hdfs dfs -put '/home/cse/Desktop/hadoop_lab_exam/hadooplabprograms/duplicaterecord/duplicate.csv' /duplicatei
+	3.yarn jar duplicaterecordvini.jar duplicate1.DuplicateValueDriver /duplicatei/duplicate.csv /duplicateo
+	4.hdfs dfs -ls /duplicateo
+	5.hdfs dfs -cat /duplicateo/part-r-00000
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+part 6: patent citations
+
+	1.hdfs dfs -mkdir /patenti
+	2.hdfs dfs -put '/home/cse/Desktop/hadoop_lab_exam/datasets/patent/cite75_99.txt'  /patenti
+	3.yarn jar Patentvini.jar citation.PatentCitation /patenti/cite75_99.txt /patento
+	4.hdfs dfs -ls /patento
+	5.hdfs dfs -cat /patento/part-r-00000
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+part 7: Employeectc
+
+1.hdfs dfs -mkdir /Employeectci
+2.hdfs dfs -put '/home/cse/Desktop/hadoop_lab_exam/hadooplabprograms/employ/empctc.txt' /Employeectci
+3.yarn jar empctc.jar empctc.EmployeeCtcDriver /Employeectci/empctc.txt /Employeectco
+4.hdfs dfs -ls /Employeeo
+5.hdfs dfs -cat /Employeectco/part-r-00000
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+part 8: Total Retail
+
+1.hdfs dfs -mkdir /retaili
+2.hdfs dfs -put '/home/cse/Retail_Sample_Data_Set.txt' /retaili
+3.yarn jar 45workspace/retail.jar vvsretailtotal.RetailDataAnalysis /retaili/Retail_Sample_Data_Set.txt /retailo
+4.hdfs dfs -ls /retailo
+5.hdfs dfs -cat /retailo/part-r-00000
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+part 9: Store Retail
+
+1.hdfs dfs -mkdir /storei
+2.hdfs dfs -put '/home/cse/Retail_Sample_Data_Set.txt' /storei
+3.yarn jar 45workspace/storeretail.jar retailstore.RetailDataAnalysis /storei/Retail_Sample_Data_Set.txt /storeo
+4.hdfs dfs -ls /storeo
+5.hdfs dfs -cat /storeo/part-r-00000
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+part 10: Prodct Retail
+
+1.hdfs dfs -mkdir /producti
+2.hdfs dfs -put '/home/cse/Retail_Sample_Data_Set.txt' /producti
+3.yarn jar 45workspace/storeretail.jar retailproduct.RetailDataAnalysis /producti/Retail_Sample_Data_Set.txt /producto
+4.hdfs dfs -ls /producto
+5.hdfs dfs -cat /producto/part-r-00000
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
